@@ -47,3 +47,19 @@ variable "price_class" {
   description = "CloudFront price class"
   default     = "PriceClass_200"
 }
+
+variable "min_ttl" {
+  default = "0"
+}
+
+variable "default_ttl" {
+  default = "300"
+}
+
+variable "max_ttl" {
+  default = "1200"
+}
+
+variable "minimum_protocol_version" {
+  default = "TLSv1"
+}

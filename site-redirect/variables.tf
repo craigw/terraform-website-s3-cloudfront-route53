@@ -30,3 +30,7 @@ variable "default_root_object" {
   description = "CloudFront default root object"
   default     = "index.html"
 }
+
+variable "minimum_protocol_version" {
+  default = "TLSv1"
+}

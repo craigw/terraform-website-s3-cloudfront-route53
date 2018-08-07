@@ -119,9 +119,9 @@ resource "aws_cloudfront_distribution" "website_cdn" {
 
     trusted_signers = ["${var.trusted_signers}"]
 
-    min_ttl          = "0"
-    default_ttl      = "300"                                              //3600
-    max_ttl          = "1200"                                             //86400
+    min_ttl          = "${var.min_ttl}"
+    default_ttl      = "${var.default_ttl}"
+    max_ttl          = "${var.max_ttl}"
     target_origin_id = "origin-bucket-${aws_s3_bucket.website_bucket.id}"
 
     // This redirects any HTTP request to HTTPS. Security first!
@@ -138,7 +138,7 @@ resource "aws_cloudfront_distribution" "website_cdn" {
   "viewer_certificate" {
     acm_certificate_arn      = "${var.acm-certificate-arn}"
     ssl_support_method       = "sni-only"
-    minimum_protocol_version = "TLSv1"
+    minimum_protocol_version = "${var.minimum_protocol_version}"
   }
 
   aliases = ["${var.domain}"]
